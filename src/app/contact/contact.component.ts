@@ -4,30 +4,45 @@ import { removeDebugNodeFromIndex } from '@angular/core/src/debug/debug_node';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  //template:'<h2>Welcome {{name}}</h2> <br> <h2 [style.color]="\'orange\'"> Style Binding</h2>',
+   //no 1 -prints the welcome to java script in the console
+   //template:'<button (click)="onClick()">Greet</button> ',
 
-  // NO 2 -Conditional oprator to assign the value of css property
-  // template:' <h2 [style.color]="hasError ? \'orange\' : \'red\'"> Style Binding</h2>',
+   //no 2 : Interpolation  and bind to the greating property shows the welcome to java world 
+  // template:'<button (click)="onClick()">Greet</button> {{greeting}}',
+
+  //3 printing the event when the mouse is click in the console
+  // template:'<button (click)="onClick($event)">Greet</button> ',
   
-  //No 3- HighLight color using the varaible to style binding 
-  //template:' <h2 [style.color]="highLightColor"> Style Binding</h2>',
-
-  //No 4 - Using ngStyle directive to apply mutiple styles
-  template:' <h2 [ngStyle]="titleStyle"> Style Binding</h2>',
+  //4.Printing the event in the interpolation aand the console
+  template:'<button (click)="onClick($event)">Greet</button>{{greeting}} ',
   styles: []
 })
 
 
 export class ContactComponent implements OnInit {
-public name="Angular.js";
-public hasError = true;
-public isSpecial = true;
-public highLightColor ="orange";
-public titleStyle = {
-  color:"blue",
-  fontStyle:"italic"
-}
+  public greeting = "";
+
   constructor() { }
   ngOnInit() {
   }
+
+  
+  // onClick(){
+  // console.log("Welcome to java Script"); 
+  //}
+
+  // onClick(){
+  // console.log("Welcome to java Script"); 
+  //this.greeting="welcome to java";
+  //}
+
+  //  onClick(event){
+  // console.log(event);
+  //this.greeting ="welcome to java world";
+  //}
+
+    onClick(event){
+      console.log(event);
+     this.greeting =event.type;
+    }
 }
